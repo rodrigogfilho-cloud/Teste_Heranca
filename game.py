@@ -1,7 +1,7 @@
 import pygame
 from classe_inimigo import Inimigo
 from classe_jogador import Jogador
-
+from classe_fantasma import Fantasma
 pygame.init()
 LARGURA, ALTURA = 800, 600
 tela = pygame.display.set_mode((800, 600))
@@ -15,6 +15,14 @@ relogio = pygame.time.Clock()
 def rodar_jogo():
     jogador = Jogador(800 // 2, 600 - 60)
     inimigo = Inimigo(800 // 2, 0)
+    fantasma = Fantasma(600 , 0)
+    # Alterei os atributos do inimigos
+
+    inimigo.imagem = pygame.image.load("src/img/slime.png")
+
+    # novo inimigo
+
+    inimigo2 = Inimigo(100,0)
 
     rodando = True
     while rodando:
@@ -28,12 +36,16 @@ def rodar_jogo():
         teclas = pygame.key.get_pressed()
 
         # Atualizações chamadas individualmente com métodos de nomes diferentes
-        jogador.mover_jogador(teclas)
-        inimigo.mover_inimigo()
+        jogador.mover(teclas)
+        inimigo.mover()
+        inimigo2.mover()
+        fantasma.mover()
 
         # Desenho chamado individualmente
         jogador.desenhar(tela)
         inimigo.desenhar(tela)
+        inimigo2.desenhar(tela)
+        fantasma.desenhar(tela)
 
         pygame.display.update()
 
