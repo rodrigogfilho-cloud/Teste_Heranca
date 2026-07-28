@@ -4,12 +4,11 @@ class Jogador:
     def __init__(self, x, y):
         # Repetição de dados estruturais básicos
         self.imagem = pygame.image.load("src/img/aviao.png")
-        self.imagem = pygame.transform.scale(self.imagem,(80,40))
         self.velocidade = 5
         self.pos_x = x
         self.pos_y = y
 
-    def mover_jogador(self, teclas):
+    def mover(self, teclas):
         if teclas[pygame.K_LEFT]:
             self.pos_x -= self.velocidade
         if teclas[pygame.K_RIGHT]:
